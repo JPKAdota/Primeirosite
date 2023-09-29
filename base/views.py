@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from base.forms import InscreverForm
+
 def loja (request):
     dados = []
     dados.append (
@@ -21,3 +23,14 @@ def loja (request):
     }
     return render(request, 'loja.html', contexto)
 
+def inscrever(request):
+    contexto = {'sucesso': False}
+    form = InscreverForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data['nome'])
+        print(form.cleaned_data['email'])
+        print(form.cleaned_data['observacao'])
+        print(form.cleaned_data['data'])
+        contexto['sucesso'] = True
+    contexto['form'] = form
+    return render(request, 'inscrever.html', contexto)
