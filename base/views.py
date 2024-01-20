@@ -27,11 +27,7 @@ def inscrever (request):
     contexto = {'sucesso': False}
     form = InscreverForm(request.POST or None)
     if form.is_valid():
-        contato = Contato()
-        contato.nome = form.cleaned_data['nome']
-        contato.email = form.cleaned_data['email']
-        contato.observacao = form.cleaned_data['observacao']
-        contato.save()
+        form.save()
         contexto['sucesso']=True
     contexto['form'] = form
     return render(request, 'inscrever.html', contexto)

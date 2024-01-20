@@ -1,7 +1,15 @@
 from django import forms
+from base.models import Contato
 
-class InscreverForm(forms.Form):
-    nome = forms.CharField(label='Nome')
-    email = forms.CharField(label='E-mail')
-    observacao = forms.CharField(label='Observação', widget=forms.Textarea)
+class InscreverForm(forms.ModelForm):
+    
+    class Meta:
+        model = Contato
+        fields = [
+            'nome', 
+            'email', 
+            'preferencia_evento',
+            'observacao', 
+        ]
+
     
