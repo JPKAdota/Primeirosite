@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+
+{% block conteudo %}
+<div class="col-md-12">
+    <h2>{{evento}}</h2>
+    <p>
+        Data:{{evento.data|date:'d/m/Y'}} | Categoria:{{evento.categoria}}
+    </p>
+    {{ evento.descricao }}
+</div>
+{% endblock %}
